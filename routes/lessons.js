@@ -5,7 +5,7 @@ const {COURSES, LESSONS} = data;
 
 router.get('/', (req, res, next) =>{
 	const queryParams = req.query;
-	const courseId = queryParams.courseId,
+	const courseId = parseInt(queryParams.courseId),
 		  filter = queryParams.filter || '',
 		  sortOrder = queryParams.sortOrder,
 		  pageNumber = parseInt(queryParams.pageNumber),
@@ -14,7 +14,7 @@ router.get('/', (req, res, next) =>{
   
   
 		  let lessons = Object.values(LESSONS)
-			  .filter(lesson => lesson.courseId === courseId)
+			  .filter(lesson => lesson.courseId == courseId)
 			  .sort((l1, l2) => {
 				if(l1[sortColumn] > l2[sortColumn]) {
 				  return 1;
@@ -36,7 +36,7 @@ router.get('/', (req, res, next) =>{
 			 const initialPos = pageNumber * pageSize;
   
 			 const lessonsPage = lessons.slice(initialPos, initialPos + pageSize);
-  
+			 
 			 setTimeout(() => {
 				 res.status(200).json({payload: lessonsPage});
 			 },1000);

@@ -9,9 +9,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-	const courseId = req.params["id"];
+	const courseId = parseInt(req.params["id"]);
 	const courses = Object.values(COURSES);
-	const course = courses.find((course) => course.id === courseId);
+	const course = courses.find((course) => course.id == courseId);
 	res.status(200).json(course);
 });
 
