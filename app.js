@@ -9,7 +9,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var coursesRouter  = require('./routes/courses')
 var lessonsRouter  = require('./routes/lessons')
-
 var app = express();
  
 
